@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{% static 'css/student_Dashboard.css' %}">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Admin Dashboard Panel</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+               <img src="{% static 'img/ChatGPT Image May 1, 2025, 12_48_30 PM.png' %}" alt="">
+            </div>
+            <span class="logo_name">Student Dashboard</span>
+        </div>
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{% url 'student_dashboard'%}">
+                    <i class="uil uil-estate"></i>
+                    
+                    <span class="link-name">Dahsboard</span>
+                </a></li>
+                <li><a href="{% url 'dashboard_courses'%}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Courses</span>
+                </a></li>
+                <li><a href="{% url 'student_profile'%}">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+                <!-- <li><a href="#">
+                    <i class="uil uil-thumbs-up"></i>
+                    <span class="link-name">Like</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Comment</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-share"></i>
+                    <span class="link-name">Share</span>
+                </a></li> -->
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="{% url 'stu_logout' %}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+            <div class="user-info">
+                <div class="user-text">
+                    <div class="user-name">{{ student.Full_Name }}</div>
+                    <div class="user-email">{{ student.Email }}</div>
+                </div>
+                
+                <div class="user-avatar">
+                    {% if student.Profile_Image %}
+                        <img src="{{ student.Profile_Image.url }}" alt="Profile Image">
+                    
+                    {%else%}
+                        <img src="{% static 'img/default.png' %}" alt="Profile" />
+                    {% endif %}
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Dashboard</span>
+                </div>
+                <div class="boxes boxes dual-box">
+                    <div class="box box1">
+                        <i class="uil uil-backpack"></i>
+                        <span class="text">Welcome </span>
+                        <span class="number">{{ student.Full_Name }}</span>
+                    </div>
+                    <div class="box box2">
+                        <i class="uil uil-comments"></i>
+                        <span class="text">Current Course</span>
+                        <span class="number">{{ student.Course }}</span>
+                    </div>
+                    <!-- <div class="box box3">
+                        <i class="uil uil-share"></i>
+                        <span class="text">Total Share</span>
+                        <span class="number">10,120</span>
+                    </div> --> 
+                </div>
+            </div>
+            <div class="dashboard-row">
+                <div class="left-section">
+                  <!-- Your current dashboard content: title, boxes, activity etc. -->
+                  <div class="activity">
+                    <div class="title">
+                        <i class="uil uil-book"></i>
+                        <span class="text">Current Course Info</span>
+                    </div>
+                    {% if course %}
+                    <div class="boxes boxes dual-box">
+                        <div class="box box3 course-box">
+                            <i class="uil uil-backpack"></i>
+                            <span class="text">Course: {{ course.Name }}</span>
+                            <p>Duration: {{ course.Duration }}</p>
+                            <p>Timings: {{ course.Timings }}</p>
+                            <p>Fees: {{ course.Fees }}</p>
+                            <p>Batch: {{ course.Batch }}</p>
+                        </div>
+                        {% else %}
+                        <p style="color: red;">Course details not found.</p>
+                        {% endif %}
+                    </div>
+                </div>
+                </div>
+                <div class="calendar-section">
+                  <div class="calendar-card">
+                    <iframe src="https://calendar.google.com/calendar/embed?src=en.indian%23holiday%40group.v.calendar.google.com&ctz=Asia%2FKolkata"
+                            style="border:0" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
+                  </div>
+                </div>
+              </div>
+           
+        </div>
+    </section>
+    <script src="{% static 'js/student_Dashboard.js' %}"></script>
+</body>
+</html>

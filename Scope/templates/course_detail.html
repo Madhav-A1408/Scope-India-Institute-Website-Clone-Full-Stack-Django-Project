@@ -1,0 +1,145 @@
+{% extends "common.html" %}
+{% load static %}
+
+{% block pageContent %}
+
+    <!-- Header Start -->
+  <!-- bODY Header Start -->
+  <div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-1">Courses at Scope India</h1>
+        <div class="d-inline-flex text-white mb-5">
+        <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'home'%}">Home</a></p>
+        <i class="fa fa-angle-double-right pt-1 px-3"></i>
+        <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'course'%}">Courses</a></p>
+            <br><br>
+
+        </div>
+        
+        <div>
+            <h2 class="text-white display-5">Center for Software, Networking, & Cloud Education</h2> <br><br>
+            <h4 class="text-white display-6">One of India's best Training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of Industrial experience. Over 1,000 students find their dream careers each year, and we have assisted more than 15,000 students so far.</h4>
+        </div>   
+         
+    </div>
+    
+</div>
+<!-- Body Header End -->
+    <!-- Header End -->
+
+
+    <!-- Detail Start -->
+
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="mb-5">
+                        <div class="section-title position-relative mb-5">
+                            <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Course Details</h6>
+                            <h1 class="display-4">{{course.Title}}</h1>
+                        </div>
+                        <img class="img-fluid rounded w-100 mb-4" src="{{ course.Image_forBanner.url }}" alt="Image">
+                        <p>{{course.Details}}</p>
+                        
+                        
+                    </div>
+
+                    
+                     
+                    
+               </div>
+
+                <div class="col-lg-4 mt-5 mt-lg-0">
+                    <div class="bg-primary mb-5 py-3">
+                        <h3 class="text-white py-3 px-4 m-0">Course Features</h3>
+                        <div class="d-flex justify-content-between border-bottom px-4">
+                            <h6 class="text-white my-3">Duration   : </h6>
+                            <h6 class="text-white my-3">{{course.Duration}}</h6>
+                            
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom px-4">
+                            <h6 class="text-white my-3">Timings   : </h6>
+                            <h6 class="text-white my-3">{{course.Timings}}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom px-4">
+                            <h6 class="text-white my-3">Next Batch   : </h6>
+                            <h6 class="text-white my-3">{{course.Batch}}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom px-4">
+                            <h6 class="text-white my-3">{{course.Overview}}</h6>
+                        </div>
+                        
+                        <h5 class="text-white py-3 px-4 m-0">Course Price: {{course.Fees}}</h5>
+                        <div class="py-3 px-4">
+                            <a class="btn btn-block btn-secondary py-3 px-5" href="{% url 'admission'%}">Enroll Now</a>
+                        </div>
+                    </div>
+
+                    
+                    
+
+                    <div class="mb-5">
+                        {% for course in courses%}
+                        <h2 class="mb-4">Other Courses</h2>
+                        <a class="d-flex align-items-center text-decoration-none mb-4" href="{% url 'course_detail' course.Name %}">
+                            <img class="img-fluid rounded" src="{{ course.Image_80x80.url }}" alt="">
+                            <div class="pl-3">
+                                <h6>PHP Full Stack Course & Internship </h6>
+                                <div class="d-flex">
+                                    <small class="text-body mr-3"><i class="fa fa-user text-primary mr-2"></i>Know More -></small>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                        <a class="d-flex align-items-center text-decoration-none mb-4" href="{% url 'course_detail' course.Name %}">
+                            <img class="img-fluid rounded" src="{{ course.Image_80x80.url }}" alt="">
+                            <div class="pl-3">
+                                <h6>Python Full Stack Course & Internship</h6>
+                                <div class="d-flex">
+                                    <small class="text-body mr-3"><i class="fa fa-user text-primary mr-2"></i>Know More -></small>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                        <a class="d-flex align-items-center text-decoration-none mb-4" href="{% url 'course_detail' course.Name %}">
+                            <img class="img-fluid rounded" src="{{ course.Image_80x80.url }}" alt="">
+                            <div class="pl-3">
+                                <h6>Red Hat Certified Engineer (RHCE) Course</h6>
+                                <div class="d-flex">
+                                    <small class="text-body mr-3"><i class="fa fa-user text-primary mr-2"></i>Know More -></small>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                        <a class="d-flex align-items-center text-decoration-none mb-4" href="{% url 'course_detail' course.Name %}">
+                            <img class="img-fluid rounded" src="{{ course.Image_80x80.url }}" alt="">
+                            <div class="pl-3">
+                                <h6>Java Full Stack Course & Internship </h6>
+                                <div class="d-flex">
+                                    <small class="text-body mr-3"><i class="fa fa-user text-primary mr-2"></i>Know More -> </small> 
+                                </div>
+                            </div>
+                        </a>
+                        <a class="d-flex align-items-center text-decoration-none" href="{% url 'course_detail' course.Name %}">
+                            <img class="img-fluid rounded" src="{{ course.Image_80x80.url }}" alt="">
+                            <div class="pl-3">
+                                <h6>DevOps Course & Internship</h6>
+                                <div class="d-flex">
+                                    <small class="text-body mr-3"><i class="fa fa-user text-primary mr-2"></i>Know More -></small>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                        {%endfor%}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Detail End -->
+    {% endblock %}
+
+
+    

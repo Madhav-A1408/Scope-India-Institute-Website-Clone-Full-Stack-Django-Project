@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link href="{% static 'css/style.reg.css' %}" rel="stylesheet">
+
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Student Regisration Form </title> 
+</head>
+<body>
+    <div class="container">
+        <header><h3>Student Registration at Scope India</h3></header>
+
+        <form action="" method="POST">
+            {% csrf_token%}
+            {{ form.as_p }}
+            
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+                   
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Full Name (required)</label>
+                            <input type="text" name="full_name" required value = "{{formError.full_name.value}}">
+                            <span class="error">{{formError.full_name.errors.as_text}}</span>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date of Birth (required)</label>
+                            <input type="date" name="dob"  required>
+                        </div>
+
+
+                        <div class="input-field">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="" disabled selected>Select gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+
+
+                        <div class="input-field" >
+                            <label>Email (required)</label>
+                            <input type="email" name="email" required value = "{{formError.email.value}}">
+                            <span class="error">{{formError.email.errors.as_text}}</span>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mobile Number (required)</label>
+                            <input type="tel" name="mob" required maxlength="10"  value = "{{formError.mob.value}}">
+                            <span class="error">{{formError.mob.errors.as_text}}</span>
+                        </div>
+
+                        
+                        <div class="input-field">
+                            <label>Education Qualification</label>
+                            <input type="text"  name="education">
+                        </div>
+
+
+                        <div class="input-field">
+                            <label>Guardian's Name</label>
+                            <input type="text" name="guardian" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Guardian's Occupation</label>
+                            <input type="text"name="guard_occupation" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Guardian's Mobile </label>
+                            <input type="tel" name="guard_mob"  maxlength="10">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details ID">
+                    <span class="title">Course Details</span>
+
+                    <div class="fields">
+                        <div class="input-field" >
+                            <label> Choose Your Preffered Course</label>
+                            <select id="course" name="course" required>
+                                <option value="" disabled selected > <b>Choose Your Course</b></option>
+                                    <optgroup label="Software Programming Courses">
+                                            <option  value="PHP Full Stack Course">PHP Full Stack Course</option>
+                                            <option value="JAVA Full Stack Course">JAVA Full Stack</option>
+                                            <option value="PYTHON Full Stack Course">PYTHON Full Stack Course</option>
+                                    </optgroup>
+                                    <optgroup label="Computer Networking and Server Courses">
+                                        <option value="Cisco Certified Network Associate - CCNA  Course">Cisco Certified Network Associate - CCNA  Course</option>
+                                        <option value="Red Hat Certified Engineer (RHCE) Course">Red Hat Certified Engineer (RHCE)</option>
+                                        <option value="DevOps  Engineer Course">DevOps Engineer Course</option>
+                                        <!-- <option>Networking & Server Admin (CCNA/MCSE/Hardware)</option>
+                                        <option>Networking & Server Admin (CCNA/RHCE/Hardware)</option>
+                                        <option>Networking & Server Admin (CCNA/MCSE/RHCE/Hardware)</option> -->
+                                    </optgroup>    
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label> Training Mode (required)</label>
+                            <select id="mode" name="mode" required>
+                                <option value="" disabled selected > <b>Choose Your Preffered Training Mode</b></option>
+                                    <option>Offline </option>
+                                    <option>Online</option>     
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label> Scope India Location (required)</label>
+                            <select id="location" name="location" required>
+                                <option value="" disabled selected > <b>Choose Your Preffered Location</b></option>
+                                    <option>Thampanoor TVM </option>
+                                    <option>Technopark TVM</option>
+                                    <option>Kochi</option>     
+                                    <option>Nagercoil</option>          
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Preffered Training Timings</label>
+                            <select id="timing" name="timing" required>
+                                <option value="" disabled selected > Choose Your Preffered Timings</option>
+                                    <option> Between 8AM - 10PM </option>
+                                    <option>Between 9AM - 1PM</option>
+                                    <option>Between 1PM - 6PM</option>     
+                                    <option>Between 6PM - 10PM</option>          
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Address</label>
+                            <input type="text" name="address" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Country</label>
+                            <input type="text" name="country" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>State</label>
+                            <input type="text" name="state" >
+                        </div>
+
+
+                        <div class="input-field">
+                            <label>City</label>
+                            <input type="text" name="city" >
+                        </div>
+
+
+                         <div class="input-field">
+                            <label>Pin Code</label>
+                            <input type="text" name="pin"  maxlength="6">
+                        </div>
+
+
+                    </div>
+
+                    <button  type ="submit" class="Submit">
+                        <span class="btnText">Complete Registration</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div> 
+            </div>
+        
+             
+           
+        </form>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

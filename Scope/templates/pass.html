@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+     <title> Check Password and Confirm Password </title> 
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontawesome CDN Link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+   </head>
+<body>
+  <div class="wrapper">
+      <div class="input-box">
+        <input id="create_pw" type="password" required>
+        <label>Create password</label>
+      </div>
+      <div class="input-box">
+        <input id="confirm_pw" type="password" required disabled>
+        <label>Confirm password</label>
+        <i class="fas fa-eye-slash show"></i>
+      </div>
+      <div class="alert">
+        <i class="fas fa-exclamation-circle error"></i>
+        <span class="text">Enter at least 8 characters</span>
+      </div>
+      <div class="input-box button">
+        <input id="button" type="button" value="Check" disabled>
+      </div>
+  </div>
+  
+  <script>
+  const createPw = document.querySelector("#create_pw"),
+   confirmPw = document.querySelector("#confirm_pw"),
+   pwShow = document.querySelector(".show"),
+   alertIcon = document.querySelector(".error"),
+   alertText= document.querySelector(".text"),
+   submitBtn = document.querySelector("#button");
+   pwShow.addEventListener("click", ()=>{
+     if((createPw.type === "password") && (confirmPw.type === "password")){
+       createPw.type = "text";
+       confirmPw.type = "text";
+       pwShow.classList.replace("fa-eye-slash","fa-eye");
+     }else {
+       createPw.type = "password";
+       confirmPw.type = "password";
+       pwShow.classList.replace("fa-eye","fa-eye-slash");
+     }
+   });
+   createPw.addEventListener("input", ()=>{
+     let val = createPw.value.trim()
+     if(val.length >= 8){
+       confirmPw.removeAttribute("disabled");
+       submitBtn.removeAttribute("disabled");
+       submitBtn.classList.add("active");
+     }else {
+       confirmPw.setAttribute("disabled", true);
+       submitBtn.setAttribute("disabled", true);
+       submitBtn.classList.remove("active");
+       confirmPw.value = "";
+       alertText.style.color = "#a6a6a6";
+       alertText.innerText = "Enter at least 8 characters";
+       alertIcon.style.display = "none";
+     }
+   });
+  submitBtn.addEventListener("click", ()=>{
+   if(createPw.value === confirmPw.value){
+     alertText.innerText = "Password matched";
+     alertIcon.style.display = "none";
+     alertText.style.color = "#4070F4";
+   }else {
+     alertText.innerText = "Password didn't matched";
+     alertIcon.style.display = "block";
+     alertText.style.color = "#D93025";
+   }
+  });
+  </script>
+</body>
+</html>
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+}
+body{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4070F4;
+  padding: 0 35px;
+}
+.wrapper{
+  position: relative;
+  background: #fff;
+  max-width: 480px;
+  width: 100%;
+  padding: 35px 40px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.input-box{
+  position: relative;
+  height: 65px;
+  margin: 25px 0;
+}
+.input-box input{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0 40px 0 16px;
+  border: 2px solid lightgrey;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.input-box input:focus,
+.input-box input:valid{
+  border-color: #4070F4;
+}
+.input-box i,
+.input-box label{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a6a6a6;
+  transition: all 0.3s ease;
+}
+.input-box label{
+  left: 15px;
+  font-size: 18px;
+  font-weight: 400;
+  background: #fff;
+  padding: 0 6px;
+  pointer-events: none;
+}
+.input-box input:focus ~ label,
+.input-box input:valid ~ label{
+  top: 0;
+  font-size: 14px;
+  color: #4070F4;
+}
+.input-box i{
+  right: 15px;
+  cursor: pointer;
+  padding: 8px;
+}
+.alert{
+  display: flex;
+  align-items: center;
+  margin-top: -13px;
+}
+.alert .error{
+  color: #D93025;
+  font-size: 18px;
+  display: none;
+  margin-right: 8px;
+}
+ .text{
+  font-size: 18px;
+  font-weight: 400;
+  color: #a6a6a6;
+}
+.input-box.button input{
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+  background: #4070F4;
+  cursor: not-allowed;
+}
+.input-box.button input.active:hover{
+  background: #265df2;
+  cursor: pointer;
+}
+If you face any difficulties while creating your Password and Confirm Password Checker or your code is not working as expected, you can download the source code files for this Confirm and Created Password Checker for free by clicking on the download button, and you can also view a live demo of this card slider by clicking on the view live button.
+
+View Live Demo
+Download Code Files
+ 
+
+TAGSCheck Password StrengthConfirm Password CheckerForm DesignHTML and CSSHTML CSS JavaScriptJavaScript Strong Password Checker
+ ShareFacebookWhatsAppTwitterCopy URL
+Previous article
+Create Stopwatch in HTML CSS and JavaScript
+Next article
+Detect Pressed Key in HTML CSS & JavaScript
+RELATED ARTICLESMORE FROM AUTHOR
+How to Create A Sidebar Menu in HTML CSS & JavaScript
+How to Create A Sidebar Menu in HTML CSS & JavaScript
+16 Free Login & Registration Form Templates in HTML & CSS
+30+ Free Login & Registration Form Templates in HTML & CSS
+Sidebar Menu with Sliding Submenu in HTML CSS 
+Create Sidebar Menu in HTML CSS & JavaScript
+1 COMMENT
+UnknownUnknown April 11, 2022 At 3:37 am
+plz make video on algorithm of javascript in hindi or english please sir
+
+Reply
+LEAVE A REPLY
+Comment:
+Name:*
+Email:*
+Save my name, email, and website in this browser for the next time I comment.
+
+
+Recent Posts
+How to Build a Gemini AI Chatbot in React.js and CSS - Dark Theme
+How to Build a Gemini AI Chatbot in React.js and CSS...
+April 28, 2025
+Create Responsive Card Slider in HTML CSS & JavaScript (SwiperJS)
+Create Responsive Card Slider in HTML CSS & JavaScript | SwiperJS
+April 5, 2025
+Build AI Image Generator in HTML CSS & JavaScript
+✨ Build AI Image Generator in HTML CSS & JavaScript
+March 19, 2025
+Build Google Gemini AI Chatbot with HTML CSS & JavaScript
+Build Google Gemini AI Chatbot with HTML CSS & JavaScript
+February 12, 2025
+Streamlining Designer Developer Collaboration Tools and Best Practices 01
+Streamlining Designer-Developer Collaboration: Tools and Best Practices
+January 28, 2025
+Featured Post
+Best 30+ JavaScript Projects for Practice (With Source Code)
+Best 30+ JavaScript Projects for Practice (With Source Code)
+December 6, 2024
+
+Categories
+HTML and CSS231
+JavaScript180
+JavaScript Projects109
+Login Form52
+Card Design42
+Navigation Bar35
+Blog30
+Website Designs26
+Image Slider25
+API Projects24
+CSS Buttons20
+Sidebar Menu20
+JavaScript Games16
+Preloader or Loader15
+Form Validation14
+CodingNepal
+ABOUT US
+CodingNepal is a blog dedicated to providing valuable and informative content about web development technologies such as HTML, CSS, JavaScript, ReactJS, and PHP... Read more
+FOLLOW US
+   
+About us Terms & Conditions Privacy policy Contact us
+Copyright © 2025 CodingNepal All Rights Reserved

@@ -1,0 +1,82 @@
+{% extends "common.html" %}
+{% load static %}
+
+{% block pageContent %}
+
+<!-- Body Header Start -->
+<div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-1">Features</h1>
+        <div class="d-inline-flex text-white mb-5">
+            <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'home'%}">Home</a></p>
+            <i class="fa fa-angle-double-right pt-1 px-3"></i>
+            <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'feature'%}">Features</a></p>
+        </div>
+        <div>
+            <h2 class="text-white display-4">SCOPE INDIA</h2>
+            <h3 class="text-white display-5">Center for Software, Networking, & Cloud Education</h3> <br><br>
+            <h4 class="text-white display-6">One of India's best Training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of Industrial experience. Over 1,000 students find their dream careers each year, and we have assisted more than 15,000 students so far.</h4>
+        </div>
+    </div>
+</div>
+<!--Body Header End -->
+
+
+
+
+<!-- Feature Start -->
+<div class="container-fluid bg-image" style="margin: 90px 0;">
+    <div class="container">
+        <div class="row">
+            {% for image in images%}
+            <div class="col-lg-7 my-5 pt-5 pb-lg-5">
+                <div class="section-title position-relative mb-4">
+                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Why Choose Us?</h6>
+                    <h1 class="display-4">Why Choose SCOPE INDIA?</h1>
+                </div>
+                <p class="mb-4 pb-2">SCOPE INDIA seeks to close the knowledge gap between education and employment by offering interactive, industry-focused IT training led by proficient working professionals and aligned with the latest trends and technologies. Our objective is to provide people with the technical expertise and confidence they need to build fulfilling careers.
+                    We aspire to become the most respected and forward-thinking training organization in India and beyond by shaping the future of IT education via innovation, integrity, and strong industry ties. We intend to expand globally.
+                </p>
+                <div class="d-flex mb-3">
+                    <div class="btn-icon bg-primary mr-4">
+                        <i class="fa fa-2x fa-graduation-cap text-white"></i>
+                    </div>
+                    <div class="mt-n1">
+                        <h4>Skilled Instructors</h4>
+                        
+                    </div>
+                </div>
+                <div class="d-flex mb-3">
+                    <div class="btn-icon bg-secondary mr-4">
+                        <i class="fa fa-2x fa-certificate text-white"></i>
+                    </div>
+                    <div class="mt-n1">
+                        <h4>International Certificate</h4>
+                       
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="btn-icon bg-warning mr-4">
+                        <i class="fa fa-2x fa-book-reader text-white"></i>
+                    </div>
+                    <div class="mt-n1">
+                        <h4>Online Classes</h4>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="col-lg-5" style="min-height: 500px;">
+                
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100" src = "{{ image.feature_Image.url }}" style="object-fit: cover;">
+                </div>
+                
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+<!-- Feature Start -->
+{% endblock %}
